@@ -1,0 +1,76 @@
+{
+  "name": "lcd-piksel-olusturucu",
+  "version": "1.0.0",
+  "description": "LCD Piksel Oluşturucu - Mikroişlemci programlama için LCD ekran piksel deseni oluşturucu",
+  "main": "electron/main.js",
+  "homepage": "https://github.com/arif7esat/lcd-pixel-generator",
+  "author": {
+    "name": "arif7esat",
+    "email": "arif7esat@github.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "electron:dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build && electron-builder",
+    "electron:build:mac": "npm run build && electron-builder --mac --arm64",
+    "electron:build:win": "npm run build && electron-builder --win --x64",
+    "electron:build:win-arm": "npm run build && electron-builder --win --arm64",
+    "electron:build:linux": "npm run build && electron-builder --linux",
+    "docker:dev": "docker-compose up dev",
+    "docker:build": "sh build.sh"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1",
+    "sonner": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.4.5",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "electron": "^25.3.1",
+    "electron-builder": "^24.6.3",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.7",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.arif7esat.lcdpikselolusturucu",
+    "productName": "LCD Piksel Oluşturucu",
+    "copyright": "Copyright © 2025 arif7esat",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "target": ["zip"],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "darkModeSupport": true
+    },
+    "win": {
+      "target": ["nsis", "portable"],
+      "icon": "build/icon.ico",
+      "publisherName": "arif7esat"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "build/icon.png",
+      "category": "Development",
+      "maintainer": "arif7esat <arif7esat@github.com>",
+      "synopsis": "LCD ekran piksel deseni oluşturucu"
+    }
+  }
+}
