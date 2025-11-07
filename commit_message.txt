@@ -1,0 +1,34 @@
+Compact UI and performance improvements
+
+Window & Layout:
+- Window size: 1200x900 -> 480x720 (much more compact)
+- Minimum size: 420x650
+- Matched to reference design
+
+Performance:
+- Removed all transition animations
+- Instant button response (no delays)
+- Optimized hover effects
+- Faster rendering
+
+UI Components:
+- Grid pixels: 12x12 -> 9x9 (compact)
+- Spacing: gap-3 -> gap-1.5
+- Padding: p-8 -> p-4
+- Font sizes reduced (text-sm, text-xs)
+- Register buttons: 10x10 -> 8x8
+
+Text Changes:
+- Title: "LCD Karakter Kayit Hesaplama"
+- Buttons: Turkish -> English (Clear/Save)
+- Footer: "produced by Ibrahim AKIN"
+
+Documentation:
+- README.md completely redesigned
+- Removed Docker references (not in project)
+- Added detailed installation guide
+- Project structure and tech stack
+- Troubleshooting section
+- Professional badges and layout
+
+Result: Smaller, faster, more professional!

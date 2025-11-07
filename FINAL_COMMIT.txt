@@ -1,0 +1,15 @@
+🎉✨ Final release build with all improvements
+
+✅ What's included:
+- Compact window size (480x720)
+- Instant button response (no delays)
+- Updated author name to arif7esat
+- Modern and professional UI
+- README completely redesigned
+- Full documentation
+
+📦 Ready executables:
+- macOS ARM64 build
+- Windows x64 build
+
+🚀 All features tested and working perfectly!
