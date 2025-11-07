@@ -5,16 +5,17 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 900,
-    minWidth: 800,
-    minHeight: 600,
+    width: 480,
+    height: 720,
+    minWidth: 420,
+    minHeight: 650,
+    resizable: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
     },
     backgroundColor: '#242F32',
-    title: 'LCD Piksel Oluşturucu'
+    title: 'LCD Pixel Olusturucu',
   });
 
   // Development modunda Vite dev server'ı kullan

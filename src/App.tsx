@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, Copy, Check } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { toast } from 'sonner';
 import { Toaster } from './components/ui/sonner';
@@ -52,29 +52,29 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8" style={{ backgroundColor: '#242F32' }}>
+    <div className="min-h-screen flex items-center justify-center p-3" style={{ backgroundColor: '#242F32' }}>
       <Toaster />
       
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-md">
         {/* Title */}
-        <h1 className="text-center mb-8" style={{ color: '#EFEFEF' }}>
-          LCD Piksel Oluşturucu
+        <h1 className="text-center mb-4 text-xl font-semibold" style={{ color: '#EFEFEF' }}>
+          LCD Karakter Kayıt Hesaplama
         </h1>
 
         {/* Main Content Card */}
         <div 
-          className="rounded-lg p-8 shadow-2xl"
+          className="rounded-lg p-4 shadow-2xl"
           style={{ backgroundColor: '#2A3639' }}
         >
           {/* Register Selection */}
-          <div className="mb-6 flex items-center justify-center gap-3">
-            <span style={{ color: '#EFEFEF' }}>Register:</span>
-            <div className="flex gap-2">
+          <div className="mb-4 flex items-center justify-center gap-2">
+            <span className="text-sm" style={{ color: '#EFEFEF' }}>Register:</span>
+            <div className="flex gap-1.5">
               {[0, 1, 2, 3, 4, 5, 6, 7].map((register) => (
                 <button
                   key={register}
                   onClick={() => setSelectedRegister(register)}
-                  className="w-10 h-10 rounded-md transition-all duration-200 flex items-center justify-center"
+                  className="w-8 h-8 rounded transition-none flex items-center justify-center text-sm font-medium"
                   style={{
                     backgroundColor: selectedRegister === register ? '#F47E52' : '#3A4A4D',
                     color: '#EFEFEF',
@@ -87,13 +87,13 @@ export default function App() {
           </div>
 
           {/* Grid Container */}
-          <div className="flex gap-4 mb-6">
+          <div className="flex gap-2 mb-4">
             {/* Left Row Values (Decimal) */}
-            <div className="flex flex-col gap-3" style={{ paddingTop: '44px' }}>
+            <div className="flex flex-col gap-1.5" style={{ paddingTop: '28px' }}>
               {grid.map((_, rowIdx) => (
                 <div
                   key={rowIdx}
-                  className="w-14 h-12 flex items-center justify-center"
+                  className="w-10 h-9 flex items-center justify-center text-sm"
                   style={{ color: '#EFEFEF', fontFamily: 'monospace' }}
                 >
                   {calculateRowValue(rowIdx)}
@@ -104,11 +104,11 @@ export default function App() {
             {/* Right Side: Column Values + Pixel Grid */}
             <div className="flex flex-col">
               {/* Column Values */}
-              <div className="flex gap-3 mb-3">
+              <div className="flex gap-1.5 mb-1.5">
                 {columnValues.map((value, idx) => (
                   <div
                     key={idx}
-                    className="w-12 h-8 flex items-center justify-center"
+                    className="w-9 h-6 flex items-center justify-center text-xs"
                     style={{ color: '#EFEFEF' }}
                   >
                     {value}
@@ -117,18 +117,17 @@ export default function App() {
               </div>
 
               {/* Pixel Grid */}
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-1.5">
                 {grid.map((row, rowIdx) => (
-                  <div key={rowIdx} className="flex gap-3">
+                  <div key={rowIdx} className="flex gap-1.5">
                     {row.map((isActive, colIdx) => (
                       <button
                         key={colIdx}
                         onClick={() => togglePixel(rowIdx, colIdx)}
-                        className="w-12 h-12 rounded-md transition-all duration-200 hover:ring-2"
+                        className="w-9 h-9 rounded transition-none hover:opacity-90"
                         style={{
                           backgroundColor: isActive ? '#F47E52' : '#3A4A4D',
-                          borderColor: '#F47E52',
-                          boxShadow: isActive ? '0 0 10px rgba(244, 126, 82, 0.3)' : 'none',
+                          boxShadow: isActive ? '0 0 8px rgba(244, 126, 82, 0.4)' : 'none',
                         }}
                       />
                     ))}
@@ -139,17 +138,16 @@ export default function App() {
           </div>
 
           {/* Code Output Area */}
-          <div className="mb-6">
-            <div className="mb-2">
-              <span style={{ color: '#EFEFEF', fontSize: '14px' }}>Kod Çıktısı:</span>
+          <div className="mb-4">
+            <div className="mb-1.5">
+              <span style={{ color: '#EFEFEF', fontSize: '12px' }}>Kod Çıktısı:</span>
             </div>
             <div
-              className="rounded-md p-4"
+              className="rounded p-2.5 text-xs"
               style={{
                 backgroundColor: '#1E2628',
                 color: '#EFEFEF',
                 fontFamily: 'monospace',
-                fontSize: '14px',
                 overflowX: 'auto',
               }}
             >
@@ -160,42 +158,41 @@ export default function App() {
           {/* Footer Panel */}
           <div className="flex items-center justify-between">
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex gap-2">
               <Button
                 onClick={clearGrid}
-                className="px-6 py-5 rounded-md transition-all duration-200 hover:opacity-90 flex items-center gap-2"
+                className="px-4 py-2 rounded transition-none hover:opacity-90 flex items-center gap-1.5 text-sm"
                 style={{
                   backgroundColor: '#F47E52',
                   color: '#EFEFEF',
                 }}
               >
-                Temizle
+                Clear
               </Button>
               <Button
                 onClick={copyCode}
-                className="px-6 py-5 rounded-md transition-all duration-200 hover:opacity-90 flex items-center gap-2"
+                className="px-4 py-2 rounded transition-none hover:opacity-90 flex items-center gap-1.5 text-sm"
                 style={{
                   backgroundColor: '#F47E52',
                   color: '#EFEFEF',
                 }}
               >
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                {copied ? 'Kopyalandı!' : 'Kopyala'}
+                {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? 'Saved' : 'Save'}
               </Button>
             </div>
 
             {/* GitHub Link */}
-            <div className="flex items-center gap-2" style={{ color: '#EFEFEF' }}>
-              <span className="text-sm opacity-70">Made by</span>
-              <Github className="w-4 h-4 opacity-70" />
+            <div className="flex items-center gap-1.5" style={{ color: '#EFEFEF' }}>
+              <span className="text-xs opacity-60">produced by</span>
               <a
                 href="https://github.com/arif7esat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm hover:opacity-80 transition-opacity"
+                className="text-xs hover:opacity-80 transition-opacity underline"
                 style={{ color: '#F47E52' }}
               >
-                arif7esat
+                İbrahim AKIN
               </a>
             </div>
           </div>
