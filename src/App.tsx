@@ -192,7 +192,7 @@ export default function App() {
                 className="text-xs hover:opacity-80 transition-opacity underline"
                 style={{ color: '#F47E52' }}
               >
-                İbrahim AKIN
+                arif7esat
               </a>
             </div>
           </div>
