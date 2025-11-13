@@ -43,8 +43,8 @@
     "wait-on": "^7.0.1"
   },
   "build": {
-    "appId": "com.arif7esat.lcdpikselolusturucu",
-    "productName": "LCD Piksel Oluşturucu",
+    "appId": "com.arif7esat.lcdpixelgenerator",
+    "productName": "LCD Pixel Generator",
     "copyright": "Copyright © 2025 arif7esat",
     "files": [
       "dist/**/*",

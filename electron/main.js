@@ -15,7 +15,7 @@ function createWindow() {
       contextIsolation: true,
     },
     backgroundColor: '#242F32',
-    title: 'LCD Pixel Olusturucu',
+    title: 'LCD Pixel Generator',
   });
 
   // Development modunda Vite dev server'ı kullan

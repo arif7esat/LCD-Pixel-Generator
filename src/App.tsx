@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Copy, Check } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { toast } from 'sonner';
@@ -10,6 +10,23 @@ export default function App() {
   );
   const [copied, setCopied] = useState(false);
   const [selectedRegister, setSelectedRegister] = useState(0);
+  const [scale, setScale] = useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const updateScale = () => {
+      if (containerRef.current) {
+        const width = containerRef.current.clientWidth;
+        // 480px referans genişlik, ona göre ölçekle
+        const newScale = Math.min(Math.max(width / 480, 0.7), 1.3);
+        setScale(newScale);
+      }
+    };
+
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, []);
 
   const columnValues = [16, 8, 4, 2, 1];
 
@@ -52,13 +69,17 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-3" style={{ backgroundColor: '#242F32' }}>
+    <div 
+      ref={containerRef}
+      className="min-h-screen flex items-center justify-center p-3" 
+      style={{ backgroundColor: '#242F32' }}
+    >
       <Toaster />
       
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md" style={{ transform: `scale(${scale})`, transformOrigin: 'center' }}>
         {/* Title */}
         <h1 className="text-center mb-4 text-xl font-semibold" style={{ color: '#EFEFEF' }}>
-          LCD Karakter Kayıt Hesaplama
+          LCD Pixel Generator
         </h1>
 
         {/* Main Content Card */}
